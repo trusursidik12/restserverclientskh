@@ -75,15 +75,23 @@ class Cams_m extends CI_Model
 		return $this->db->insert('cams_data', $data);
 	}
 
-	public function add_cams_ispu()
+	public function add_cams_data_gupit()
 	{
 		date_default_timezone_set("Asia/Bangkok");
 		$data = array(
 			'id_stasiun' 		=> $this->input->post('id_stasiun'),
-			'waktu' 				=> Date("Y:m:d h:i:s"),
+			'waktu' 			=> $this->input->post('waktu'),
+			//'waktu' 				=> Date("Y:m:d h:i:s"),
 			'h2s' 				=> $this->input->post('h2s'),
-			'cs2' 				=> $this->input->post('cs2')
+			'cs2' 				=> $this->input->post('cs2'),
+			'ws' 				=> $this->input->post('ws'),
+			'wd' 				=> $this->input->post('wd'),
+			'humidity' 			=> $this->input->post('humidity'),
+			'temperature' 		=> $this->input->post('temperature'),
+			'pressure' 			=> $this->input->post('pressure'),
+			'sr' 				=> $this->input->post('sr'),
+			'rain_intensity' 	=> $this->input->post('rain_intensity')
 		);
-		return $this->db->insert('cams_ispu', $data);
+		return $this->db->insert('cams_data', $data);
 	}
 }

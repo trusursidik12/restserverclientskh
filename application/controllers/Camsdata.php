@@ -26,4 +26,20 @@ class Camsdata extends RestController {
 		}
 	}
 
+    public function gupit_post()
+    {
+        if($this->cams_m->add_cams_data_gupit() > 0){
+            $this->response([
+                    'status'    => true,
+                    'data'      => 'Data Berhasil Ditambah'
+                ], 200);
+        }else{
+            $this->response([
+                    'status'    => false,
+                    'message'   => 'Data Tidak Ditemukan'
+                ], 404);
+        }
+    }
+
+
 }
