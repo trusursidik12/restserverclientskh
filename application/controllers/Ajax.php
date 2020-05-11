@@ -25,11 +25,10 @@ class Ajax extends CI_Controller {
             $row[] = $no.".";
             $row[] = $cams->id_stasiun;
             $row[] = $cams->waktu;
-            $row[] = round($cams->h2s * 1500);
-            $row[] = round($cams->cs2 * 3130);
             $row[] = $cams->h2s;
-            $row[] = $cams->cs2;
             $row[] = $cams->ws;
+            $row[] = round($cams->h2s / 1500, 3);
+            $row[] = round($cams->cs2 / 3130, 3);
             $row[] = $cams->wd;
             $row[] = $cams->humidity;
             $row[] = $cams->temperature;
@@ -48,40 +47,40 @@ class Ajax extends CI_Controller {
         echo json_encode($output);
     }
 	
-	public function get_ajax2() {
-        $list = $this->ajax_m->get_datatables();
-        $data = array();
-        $no = @$_POST['start'];
-        foreach ($list as $cams) {
-            $no++;
-            $row = array();
-            $row[] = $no.".";
-            $row[] = $cams->id_stasiun;
-            $row[] = $cams->waktu;
-            $row[] = $cams->h2s / 1500;
-            $row[] = $cams->cs2 / 3130;
-            $row[] = $cams->h2s;
-            $row[] = $cams->cs2;
-            $row[] = $cams->ws;
-            $row[] = $cams->wd;
-            $row[] = $cams->humidity;
-            $row[] = $cams->temperature;
-            $row[] = $cams->pressure;
-            $row[] = $cams->sr;
-            $row[] = $cams->rain_intensity;
-            $data[] = $row;
-        }
-        $output = array(
-                    "draw" => @$_POST['draw'],
-                    "recordsTotal" => $this->ajax_m->count_all(),
-                    "recordsFiltered" => $this->ajax_m->count_filtered(),
-                    "data" => $data,
-                );
-		$this->output
-        ->set_content_type("Access-Control-Allow-Origin: *")
-        ->set_content_type("Access-Control-Allow-Methods: POST")
-        ->set_content_type("Access-Control-Allow-Headers: Origin, Methods, Content-Type");
-        // output to json format
-        echo json_encode($output);
-    }
+	// public function get_ajax2() {
+ //        $list = $this->ajax_m->get_datatables();
+ //        $data = array();
+ //        $no = @$_POST['start'];
+ //        foreach ($list as $cams) {
+ //            $no++;
+ //            $row = array();
+ //            $row[] = $no.".";
+ //            $row[] = $cams->id_stasiun;
+ //            $row[] = $cams->waktu;
+ //            $row[] = round($cams->h2s * 1500);
+ //            $row[] = round($cams->cs2 * 3130);
+ //            $row[] = $cams->h2s;
+ //            $row[] = $cams->cs2;
+ //            $row[] = $cams->ws;
+ //            $row[] = $cams->wd;
+ //            $row[] = $cams->humidity;
+ //            $row[] = $cams->temperature;
+ //            $row[] = $cams->pressure;
+ //            $row[] = $cams->sr;
+ //            $row[] = $cams->rain_intensity;
+ //            $data[] = $row;
+ //        }
+ //        $output = array(
+ //                    "draw" => @$_POST['draw'],
+ //                    "recordsTotal" => $this->ajax_m->count_all(),
+ //                    "recordsFiltered" => $this->ajax_m->count_filtered(),
+ //                    "data" => $data,
+ //                );
+	// 	$this->output
+ //        ->set_content_type("Access-Control-Allow-Origin: *")
+ //        ->set_content_type("Access-Control-Allow-Methods: POST")
+ //        ->set_content_type("Access-Control-Allow-Headers: Origin, Methods, Content-Type");
+ //        // output to json format
+ //        echo json_encode($output);
+ //    }
 }
