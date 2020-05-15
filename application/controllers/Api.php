@@ -11,29 +11,29 @@ class Api extends RestController {
     	parent::__construct();
     }
 
-	// public function index_get()
-	// {
+	public function index_get()
+	{
 
-	// 	$id = $this->get('id');
+		$id = $this->get('id');
 
-	// 	if ($id === null) {
-	// 		$data = $this->cams_m->get_cams_data();
-	// 	} else {
-	// 		$data = $this->cams_m->get_cams_data($id);
-	// 	}
+		if ($id === null) {
+			$data = $this->cams_m->get_cams_data();
+		} else {
+			$data = $this->cams_m->get_cams_data($id);
+		}
 
-	// 	if ($data) {
-	// 		$this->response([
- //                    'status' 	=> true,
- //                    'data' 		=> $data
- //                ], 200);
-	// 	} else {
-	// 		$this->response([
- //                    'status' 	=> false,
- //                    'message' 	=> 'Data Tidak Ditemukan'
- //                ], 404);
-	// 	}
-	// }
+		if ($data) {
+			$this->response([
+                    'status' 	=> true,
+                    'data' 		=> $data
+                ], 200);
+		} else {
+			$this->response([
+                    'status' 	=> false,
+                    'message' 	=> 'Data Tidak Ditemukan'
+                ], 404);
+		}
+	}
 
 	public function soloRum_get()
 	{

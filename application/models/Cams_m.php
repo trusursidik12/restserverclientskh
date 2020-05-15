@@ -3,18 +3,21 @@
 class Cams_m extends CI_Model
 {
 
-	// public function get_cams_data($id = FALSE)
-	// {
-	// 	if($id === FALSE){
-	// 		$this->db->select('DISTINCT(waktu), id_stasiun, h2s, cs2, ws, wd, humidity, temperature, pressure, sr, rain_intensity');
-	// 		$this->db->group_by('waktu'); 
-	// 		$this->db->order_by('waktu', 'DESC');
-	// 		$query = $this->db->get('cams_data');
-	// 		return $query->result_array();
-	// 	}
-	// 	$query = $this->db->get_where('cams_data', array('id' => $id));
-	// 	return $query->row_array();
-	// }
+	public function get_cams_data($id = FALSE)
+	{
+		if($id === FALSE){
+			$this->db->select('DISTINCT(waktu), id_stasiun, h2s, cs2, ws, wd, humidity, temperature, pressure, sr, rain_intensity');
+			$this->db->group_by('waktu'); 
+			$this->db->where('id_stasiun', 'SKH_RUM'); 
+			$this->db->or_where('id_stasiun', 'SKH_GUPIT'); 
+			$this->db->or_where('id_stasiun', 'SKH_PLESAN'); 
+			$this->db->order_by('waktu', 'DESC');
+			$query = $this->db->get('cams_data');
+			return $query->result_array();
+		}
+		$query = $this->db->get_where('cams_data', array('id' => $id));
+		return $query->row_array();
+	}
 
 	public function get_cams_data_solo_rum($id = FALSE)
 	{
