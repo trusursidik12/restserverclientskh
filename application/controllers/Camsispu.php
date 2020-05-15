@@ -11,19 +11,19 @@ class Camsispu extends RestController {
     	parent::__construct();
     }
 
-	public function index_post()
-	{
-		if($this->cams_m->add_cams_ispu() > 0){
-			$this->response([
-                    'status' 	=> true,
-                    'data' 		=> 'Data Berhasil Ditambah'
-                ], 200);
-		}else{
-			$this->response([
-                    'status' 	=> false,
-                    'message' 	=> 'Data Tidak Ditemukan'
-                ], 404);
-		}
-	}
+	// public function index_post()
+	// {
+	// 	if($this->cams_m->add_cams_ispu() > 0){
+	// 		$this->response([
+ //                    'status' 	=> true,
+ //                    'data' 		=> 'Data Berhasil Ditambah'
+ //                ], 200);
+	// 	}else{
+	// 		$this->response([
+ //                    'status' 	=> false,
+ //                    'message' 	=> 'Data Tidak Ditemukan'
+ //                ], 404);
+	// 	}
+	// }
 
 }
